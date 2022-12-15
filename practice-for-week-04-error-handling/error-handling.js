@@ -1,20 +1,39 @@
 // 1.
 function sum(array) {
-  let sum = 0;
+  
   for (let i = 0; i < array.length; i++) {
     sum += array[i];
   }
   return sum;
 }
 
-let res = sum(null);
-console.log(res);
+try {
+  let res = sum(null);
+  console.log(res);
+} catch (e) {
+  if (e instanceof TypeError) {
+    console.log(e.message);
+  }
+}
+
 
 // 2.
 // tests
-sayName("Alex");
-sayName(1);
+try{
+  sayName("Alex");
+  sayName(1);
+} catch (e) {
+  console.log(e.message);
+}
+
 // Your code here
+function sayName(name) {
+  if(typeof name !== 'string') {
+    throw TypeError('Invalid name! Must be a string!')
+  }
+
+  console.log(name);
+}
 
 // 3.
 function greet(greeting) {
@@ -23,4 +42,10 @@ function greet(greeting) {
   }
 
   console.log(greeting);
+}
+
+try{
+  greet()
+} catch {
+  console.log('Hello World!')
 }
